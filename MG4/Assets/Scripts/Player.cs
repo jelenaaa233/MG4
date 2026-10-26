@@ -63,7 +63,12 @@ public class Player : MonoBehaviour
         //      Component.
         //
         // Feature 5 of the rubric should work after this.
+        FloatAnimation floatAnimation = other.gameObject.GetComponent<FloatAnimation>();
 
+        if (floatAnimation != null)
+        {
+            floatAnimation.StopAnimation();
+        }
 
         // STEP 6 -------------------------------------------------------------
     }
@@ -81,15 +86,15 @@ public class Player : MonoBehaviour
             {
                 case EquationType.Add:
                     // UNCOMMENT AFTER STEP 3
-                    //correct = CheckIfAdditionCorrect(number);
+                    correct = CheckIfAdditionCorrect(number);
                     break;
                 case EquationType.Subtract:
                     // UNCOMMENT AFTER STEP 4
-                    //correct = CheckIfSubtractionCorrect(number);
+                    correct = CheckIfSubtractionCorrect(number);
                     break;
                 case EquationType.Multiply:
                     // UNCOMMENT AFTER STEP 5
-                    //correct = CheckIfMultiplicationCorrect(number);
+                    correct = CheckIfMultiplicationCorrect(number);
                     break;
             }
         }
@@ -142,7 +147,10 @@ public class Player : MonoBehaviour
 
     // STEP 3 -----------------------------------------------------------------
 
-
+    private bool CheckIfAdditionCorrect(int number)
+    {
+        return _number1 + _number2 == number;
+    }
 
     // STEP 4 -----------------------------------------------------------------
     // Write a method named CheckIfSubtractionCorrect that works almost exactly
@@ -157,7 +165,10 @@ public class Player : MonoBehaviour
     // private ??? CheckIfSubtractionCorrect (??? ???)
 
     // STEP 4 -----------------------------------------------------------------
-
+    private bool CheckIfSubtractionCorrect(int number)
+    {
+        return _number1 - _number2 == number;
+    }
 
 
     // STEP 5 -----------------------------------------------------------------
@@ -173,5 +184,8 @@ public class Player : MonoBehaviour
     // private ??? CheckIfMultiplicationCorrect (??? ???)
 
     // STEP 5 -----------------------------------------------------------------
-
+    private bool CheckIfMultiplicationCorrect(int number)
+    {
+        return _number1 * _number2 == number;
+    }
 }
